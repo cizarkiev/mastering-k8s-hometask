@@ -18,7 +18,7 @@ After that nginx container was able to start.
 - find kube-apiserver PID on codespace node 
 
   ```bash
-  pgrep kube-apiserver
+  pgrep kube-apiserver (It doesn't work with `kubectl debug` way if kube-apiserver runs as a static pod)
 
   ```
 - run perf record generation:
