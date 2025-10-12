@@ -15,10 +15,10 @@ After that nginx container was able to start.
 
 - Create cluster
 - run container with kubectl-flame (file kubectl-flame-pod.yaml)
-- find kube-apiserver PID on codespace node 
+- find kube-apiserver PID on codespace node ((It doesn't work with `kubectl debug` way if kube-apiserver runs as a static pod))
 
   ```bash
-  pgrep kube-apiserver (It doesn't work with `kubectl debug` way if kube-apiserver runs as a static pod)
+  pgrep kube-apiserver
 
   ```
 - run perf record generation:
