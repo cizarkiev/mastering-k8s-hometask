@@ -38,3 +38,18 @@ After that nginx container was able to start.
   ```
 
 ### Home task 3.1 (Build and run Controller)
+
+```bash
+go mod tidy
+
+controller-gen object paths="./api/..."
+
+controller-gen crd:crdVersions=v1 paths=./... output:crd:artifacts:config=config/crd/bases
+
+go build -o bin/manager main.go
+
+kubectl apply -f config/crd/bases/apps.newresource.com_newresources.yaml
+
+./bin/manager
+
+```
