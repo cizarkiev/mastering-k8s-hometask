@@ -51,7 +51,7 @@ go build -o bin/manager main.go
 kubectl apply -f config/crd/bases/apps.newresource.com_newresources.yaml
 
 ./bin/manager
-
+```
 
 ### Home task 3.2 (Controller Testing and Metrics)
 
