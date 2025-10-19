@@ -3,7 +3,7 @@
 Disable option `--cloud-provider=external` for `kubelet`, `kube-apiserver` and `kube-controller-manager`.  
 After that nginx container was able to start.
 
-### Home task 2.1
+### Home task 2.1 (run control-plane as static pods)
 
 - Added static pod manifests for etcd, kube-apiserver, kube-controller-manager, and kube-scheduler.
 
@@ -37,4 +37,19 @@ After that nginx container was able to start.
   sudo kubebuilder/bin/kubectl cp kubectl-flame:/tmp/flame.svg /workspaces/mastering-k8s/kube-apiserver-flame.svg
   ```
 
-- 
+### Home task 3.1 (Build and run Controller)
+
+```bash
+go mod tidy
+
+controller-gen object paths="./api/..."
+
+controller-gen crd:crdVersions=v1 paths=./... output:crd:artifacts:config=config/crd/bases
+
+go build -o bin/manager main.go
+
+kubectl apply -f config/crd/bases/apps.newresource.com_newresources.yaml
+
+./bin/manager
+
+```
