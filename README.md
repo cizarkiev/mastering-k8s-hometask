@@ -53,3 +53,46 @@ kubectl apply -f config/crd/bases/apps.newresource.com_newresources.yaml
 ./bin/manager
 
 ```
+
+### Home task 3.2 (Controller Testing and Metrics)
+
+#### Running Tests
+
+The controller includes unit tests using the `envtest` framework. To run the tests:
+
+1. Install `setup-envtest` tool:
+   ```bash
+   go install sigs.k8s.io/controller-runtime/tools/setup-envtest@latest
+   ```
+
+2. Download Kubernetes test binaries (etcd, kube-apiserver):
+   ```bash
+   setup-envtest use
+   ```
+
+3. Set the KUBEBUILDER_ASSETS environment variable:
+   ```bash
+   export KUBEBUILDER_ASSETS="$(setup-envtest use -p path)"
+   ```
+
+4. Run the tests:
+   ```bash
+   cd new-controller
+   go test -v ./test
+   ```
+
+The tests will:
+- Start a local Kubernetes API server (using envtest)
+- Apply the CRD
+- Start the controller
+- Create test resources
+- Verify reconciliation works correctly
+
+#### Accessing Controller Metrics
+
+The controller exposes Prometheus metrics on port 8080 (by default).
+
+While the controller is running, access metrics endpoint:
+   ```bash
+   curl http://localhost:8080/metrics
+   ```
