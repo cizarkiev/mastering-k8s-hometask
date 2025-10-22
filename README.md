@@ -95,3 +95,18 @@ While the controller is running, access metrics endpoint:
    ```bash
    curl http://localhost:8080/metrics
    ```
+
+### Home task 4.1 (GitOps based on FluxCD with dynamic ImageUpdate)
+
+1. Deploy initial infrastructure + FluxCD, repo: [k8sdiy-env](https://github.com/cizarkiev/k8sdiy-env)
+
+2. Prepare application and build artifacts (container, helm chart), repo: [kbot-src](https://github.com/cizarkiev/kbot-src)
+
+3. Prepare FluxCD repository, repo: [flux-gitops-dev](https://github.com/cizarkiev/flux-gitops-dev)
+
+4. Test ImageUpdate when next release is created in [kbot-src](https://github.com/cizarkiev/kbot-src)
+
+5. Test application work:
+
+   ![Test Application](image/test.png)
+
